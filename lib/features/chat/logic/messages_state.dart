@@ -6,4 +6,8 @@ class MessagesInitial extends MessagesState {}
 
 class MessagesConversationStartedSuccessfullyState extends MessagesState {}
 
-class MessagesNewMsgAddedSuccessfullyState extends MessagesState {}
+class MessagesNewMsgAddedSuccessfullyState extends MessagesState {
+  final bool isSelectingCategory;
+
+  MessagesNewMsgAddedSuccessfullyState({required this.isSelectingCategory});
+}

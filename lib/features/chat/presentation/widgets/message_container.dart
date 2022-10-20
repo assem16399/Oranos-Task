@@ -22,7 +22,8 @@ class MessageContainer extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
           child: Text(msgText),
         ),
       ),
