@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:oranos/features/profile/presentation/screens/profile_tab.dart';
+import 'package:oranos/features/wallet/presentation/screens/wallet_tab.dart';
 
 import '/features/favorites/presentation/screens/favorites_tab.dart';
 import '/features/home/presentation/screens/home_tab.dart';
@@ -15,8 +17,8 @@ class _AppLayoutState extends State<AppLayout> {
   final _tabs = [
     const HomeTab(),
     const FavoritesTab(),
-    const HomeTab(),
-    const FavoritesTab(),
+    const WalletTab(),
+    const ProfileTab(),
   ];
   var _currentIndex = 0;
 
