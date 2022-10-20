@@ -10,7 +10,7 @@ final kLightTheme = ThemeData(
   scaffoldBackgroundColor: kPrimaryColor,
   textTheme: const TextTheme(
     headline5: TextStyle(
-      color: kPrimaryColor, fontSize: 19, fontWeight: FontWeight.normal,
+      color: kSecondaryColor, fontSize: 19, fontWeight: FontWeight.normal,
       // TODO add SFProText as the font family
     ),
     headline6: TextStyle(

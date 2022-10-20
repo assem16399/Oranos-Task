@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oranos/layout/app_layout.dart';
+import 'package:oranos/features/on%20boarding/presentation/screens/get_started_screen.dart';
 
 import 'core/styles/themes.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Oranos Task',
       theme: kLightTheme,
-      home: const AppLayout(),
+      home: const GetStartedScreen(),
     );
   }
 }
