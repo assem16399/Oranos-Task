@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:oranos/core/styles/colors.dart';
 
-import '../wodgets/centered_on_boarding_screen_text.dart';
+import '/features/on%20boarding/presentation/screens/get_started_screen.dart';
+import '../widgets/ask_to_create_account.dart';
+import '../widgets/centered_on_boarding_screen_text.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -32,13 +34,17 @@ class OnBoardingScreen extends StatelessWidget {
                       child: FractionallySizedBox(
                         widthFactor: 0.8,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const GetStartedScreen()));
+                          },
                           child: const Text('Get Started'),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const AskForToCreateAccount(),
+                    const AskToCreateAccount(),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -58,32 +64,6 @@ class OnBoardingScreen extends StatelessWidget {
                 )),
               ],
             ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class AskForToCreateAccount extends StatelessWidget {
-  const AskForToCreateAccount({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text.rich(
-      TextSpan(
-        children: [
-          TextSpan(
-              text: 'Don\'t have an account? ',
-              style: Theme.of(context).textTheme.caption),
-          const TextSpan(
-            text: 'SignUp',
-            style: TextStyle(
-                fontSize: 12.0,
-                fontWeight: FontWeight.w500,
-                color: kElevatedButtonBGColor),
           )
         ],
       ),
