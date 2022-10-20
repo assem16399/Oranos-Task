@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/styles/colors.dart';
+import '/core/styles/colors.dart';
 
 class HomeListTitle extends StatelessWidget {
   const HomeListTitle(

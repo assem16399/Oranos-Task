@@ -24,9 +24,16 @@ class _AppLayoutState extends State<AppLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const FractionallySizedBox(
+        leading: FractionallySizedBox(
           heightFactor: 0.4,
-          child: CircleAvatar(),
+          child: CircleAvatar(
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              child: Image.network(
+                'https://react.semantic-ui.com/images/avatar/large/elliot.jpg',
+              ),
+            ),
+          ),
         ),
         title: const Text.rich(
           TextSpan(
