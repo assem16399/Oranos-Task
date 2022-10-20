@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:oranos/features/profile/presentation/screens/profile_tab.dart';
-import 'package:oranos/features/wallet/presentation/screens/wallet_tab.dart';
 
 import '/features/favorites/presentation/screens/favorites_tab.dart';
 import '/features/home/presentation/screens/home_tab.dart';
+import '/features/profile/presentation/screens/profile_tab.dart';
+import '/features/wallet/presentation/screens/wallet_tab.dart';
 
 class AppLayout extends StatefulWidget {
   const AppLayout({Key? key}) : super(key: key);

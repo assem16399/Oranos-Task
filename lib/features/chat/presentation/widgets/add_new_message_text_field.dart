@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/styles/colors.dart';
-import '../../../../layout/app_layout.dart';
+import '/core/styles/colors.dart';
+import '/layout/app_layout.dart';
 import '../../logic/messages_cubit.dart';
 
 class AddNewMessageTextField extends StatefulWidget {
