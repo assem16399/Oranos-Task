@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oranos/features/chat/presentation/screens/chat_bot_screen.dart';
 
 import '/features/chat/logic/messages_cubit.dart';
+import '/features/chat/presentation/screens/chat_bot_screen.dart';
 import 'core/styles/themes.dart';
 
 void main() {
