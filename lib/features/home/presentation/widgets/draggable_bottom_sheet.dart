@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors.dart';
+import '../../data/models/category.dart';
 import 'draggable_bottom_sheet_contents.dart';
 
 class DraggableBottomSheet extends StatelessWidget {
-  const DraggableBottomSheet({
-    Key? key,
-  }) : super(key: key);
+  const DraggableBottomSheet({Key? key, required this.categories})
+      : super(key: key);
 
+  final List<Category> categories;
   @override
   Widget build(BuildContext context) {
     final isLandScape =
@@ -27,8 +28,7 @@ class DraggableBottomSheet extends StatelessWidget {
               ),
               border: Border.all(color: const Color(0xffEAEBEC))),
           child: DraggableBottomSheetContents(
-            scrollController: scrollController,
-          ),
+              scrollController: scrollController, categories: categories),
         );
       },
     );

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors.dart';
+import '../../data/models/recommended_expert.dart';
 
 class RecommendedExpertListItem extends StatelessWidget {
-  const RecommendedExpertListItem({
-    Key? key,
-  }) : super(key: key);
+  const RecommendedExpertListItem({Key? key, required this.expert})
+      : super(key: key);
 
+  final RecommendedExpert expert;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +17,9 @@ class RecommendedExpertListItem extends StatelessWidget {
           border: Border.all(width: 0.5, color: kBorderColor)),
       child: Column(
         children: [
-          const RecommendedExpertImage(),
+          RecommendedExpertImage(
+            imageUrl: expert.imageUrl,
+          ),
           Expanded(
             child: Padding(
               padding:
@@ -32,7 +35,7 @@ class RecommendedExpertListItem extends StatelessWidget {
                         size: 20,
                       ),
                       Text(
-                        ' (5.0)',
+                        ' (${expert.rating})',
                         style: Theme.of(context).textTheme.caption!.copyWith(
                               color: kSideInfoColor,
                               // TODO set font family to SFProText
@@ -56,7 +59,7 @@ class RecommendedExpertListItem extends StatelessWidget {
                   SizedBox(
                     height: 19,
                     child: Text(
-                      'Aasem Hany',
+                      expert.name,
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
@@ -64,7 +67,7 @@ class RecommendedExpertListItem extends StatelessWidget {
                   SizedBox(
                     height: 17,
                     child: Text(
-                      'Supply Chain',
+                      expert.specialization,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                   )
@@ -79,10 +82,10 @@ class RecommendedExpertListItem extends StatelessWidget {
 }
 
 class RecommendedExpertImage extends StatelessWidget {
-  const RecommendedExpertImage({
-    Key? key,
-  }) : super(key: key);
+  const RecommendedExpertImage({Key? key, required this.imageUrl})
+      : super(key: key);
 
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -94,7 +97,7 @@ class RecommendedExpertImage extends StatelessWidget {
           topRight: Radius.circular(15),
         ),
         child: Image.network(
-          'https://react.semantic-ui.com/images/avatar/large/elliot.jpg',
+          imageUrl,
           fit: BoxFit.cover,
         ),
       ),

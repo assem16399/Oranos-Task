@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oranos/core/styles/colors.dart';
 
+import '../../data/models/category.dart';
 import 'scroll_handler.dart';
 
 class DraggableBottomSheetContents extends StatelessWidget {
-  const DraggableBottomSheetContents({Key? key, this.scrollController})
+  const DraggableBottomSheetContents(
+      {Key? key, this.scrollController, required this.categories})
       : super(key: key);
 
   final ScrollController? scrollController;
+  final List<Category> categories;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -16,7 +19,7 @@ class DraggableBottomSheetContents extends StatelessWidget {
         height: 10,
       ),
       controller: scrollController,
-      itemCount: 25,
+      itemCount: categories.length + 1,
       itemBuilder: (BuildContext context, int index) {
         return index == 0
             ? const ScrollHandler()
@@ -26,13 +29,13 @@ class DraggableBottomSheetContents extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                     border: Border.all(width: 0.5, color: kBorderColor)),
                 child: ListTile(
-                  leading: SvgPicture.asset('assets/icons/it_icon.svg'),
+                  leading: SvgPicture.network(categories[index - 1].imageUrl),
                   title: Text(
-                    'Information Technology',
+                    categories[index - 1].title,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   subtitle: Text(
-                    '23 Experts',
+                    '${categories[index - 1].expertsCount} Experts',
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
                   trailing: const Icon(
