@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oranos/features/favorites/logic/cubit/favorites_cubit.dart';
-import 'package:oranos/features/home/logic/home_cubit.dart';
-import 'package:oranos/layout/app_layout.dart';
 
 import '/features/chat/logic/messages_cubit.dart';
+import '/features/favorites/logic/cubit/favorites_cubit.dart';
+import '/features/home/logic/home_cubit.dart';
+import '/features/on%20boarding/presentation/screens/on_boarding_screen.dart';
 import 'core/components/constants/bloc_observer.dart';
 import 'core/dependency_injection/injection_container.dart' as di;
 import 'core/network/remote/dio_helper.dart';
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Oranos Task',
         theme: kLightTheme,
-        home: const AppLayout(),
+        home: const OnBoardingScreen(),
       ),
     );
   }
