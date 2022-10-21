@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:oranos/features/home/data/models/recommended_expert.dart';
+
+import '/features/home/data/models/recommended_expert.dart';
 
 part 'favorites_state.dart';
 

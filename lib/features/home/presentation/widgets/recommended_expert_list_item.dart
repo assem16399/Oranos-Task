@@ -93,7 +93,6 @@ class FavoriteIcon extends StatelessWidget {
           nextState is FavoritesStatusChangedState && nextState.itemId == id,
       builder: (context, state) {
         final favCubit = BlocProvider.of<FavoritesCubit>(context);
-        print('Building');
         return InkWell(
           onTap: () {
             favCubit.toggleExpertFavoriteStatus(expert);

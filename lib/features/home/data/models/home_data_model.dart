@@ -1,5 +1,4 @@
-import 'package:oranos/features/home/data/models/recommended_expert.dart';
-
+import '/features/home/data/models/recommended_expert.dart';
 import 'category.dart';
 import 'online_expert.dart';
 
