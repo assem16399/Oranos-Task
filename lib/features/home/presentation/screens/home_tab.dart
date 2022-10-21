@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oranos/core/components/widgets/on_error_refresh_button.dart';
 import 'package:oranos/features/home/logic/home_cubit.dart';
 
 import '../widgets/draggable_bottom_sheet.dart';
@@ -26,10 +27,21 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final homeData = BlocProvider.of<HomeCubit>(context).homeModel;
+        final homeCubit = BlocProvider.of<HomeCubit>(context);
+        final homeData = homeCubit.homeModel;
         if (state is HomeDataLoadingState) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
+          );
+        }
+        if (state is HomeDataFailedToLoadState) {
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: OnErrorRefreshButton(
+                  onRefreshPressed: homeCubit.getHomeData,
+                  failMsg: state.failMsg),
+            ),
           );
         }
         return Stack(
@@ -60,9 +72,7 @@ class _HomeTabState extends State<HomeTab> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 35,
-                    ),
+                    const SizedBox(height: 35),
                     HomeListTitle(
                       title: 'Online Experts',
                       onMorePressed: () {},
