@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:oranos/features/home/data/models/home_data_model.dart';
-import 'package:oranos/features/home/data/repo/home_repo.dart';
+import 'package:oranos/features/home/data/models/recommended_expert.dart';
+
+import '/features/home/data/models/home_data_model.dart';
+import '/features/home/data/repo/home_repo.dart';
 
 part 'home_state.dart';
 
@@ -10,6 +12,10 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeRepo homeRepo;
 
   var homeModel = HomeDataModel.empty();
+
+  RecommendedExpert findExpertById(int id) {
+    return homeModel.recommendedExperts.firstWhere((expert) => expert.id == id);
+  }
 
   void getHomeData() async {
     emit(HomeDataLoadingState());

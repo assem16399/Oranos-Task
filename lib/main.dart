@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:oranos/core/network/network_info.dart';
-import 'package:oranos/features/home/data/provider/home_api.dart';
+import 'package:oranos/features/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:oranos/features/home/logic/home_cubit.dart';
 import 'package:oranos/layout/app_layout.dart';
 
 import '/features/chat/logic/messages_cubit.dart';
 import 'core/components/constants/bloc_observer.dart';
+import 'core/dependency_injection/injection_container.dart' as di;
 import 'core/network/remote/dio_helper.dart';
 import 'core/styles/themes.dart';
-import 'features/home/data/repo/home_repo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   DioHelper.init();
+  di.init();
 
   BlocOverrides.runZoned(
     () {
@@ -33,14 +32,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<MessagesCubit>(create: (context) => MessagesCubit()),
-        BlocProvider<HomeCubit>(
-          create: (context) => HomeCubit(
-            homeRepo: HomeRepoImpl(
-              homeApi: HomeApiWithDioImpl(),
-              networkInfo: NetworkInfoImpl(InternetConnectionChecker()),
-            ),
-          ),
-        ),
+        BlocProvider<HomeCubit>(create: (context) => di.sl.get<HomeCubit>()),
+        BlocProvider<FavoritesCubit>(create: (context) => FavoritesCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

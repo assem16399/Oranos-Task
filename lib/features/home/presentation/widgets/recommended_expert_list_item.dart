@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oranos/features/favorites/logic/cubit/favorites_cubit.dart';
+import 'package:oranos/features/home/logic/home_cubit.dart';
 
-import '../../../../core/styles/colors.dart';
+import '/core/styles/colors.dart';
 import '../../data/models/recommended_expert.dart';
 
 class RecommendedExpertListItem extends StatelessWidget {
@@ -27,33 +30,27 @@ class RecommendedExpertListItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.star_rate_rounded,
-                        color: Color(0xffFFC817),
-                        size: 20,
-                      ),
-                      Text(
-                        ' (${expert.rating})',
-                        style: Theme.of(context).textTheme.caption!.copyWith(
-                              color: kSideInfoColor,
-                              // TODO set font family to SFProText
-                            ),
-                      ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        radius: 40,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                        child: const Icon(
-                          Icons.favorite,
-                          color: kSideInfoColor,
+                  SizedBox(
+                    height: 20,
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.star_rate_rounded,
+                          color: Color(0xffFFC817),
                           size: 20,
                         ),
-                      )
-                    ],
+                        Text(
+                          ' (${expert.rating})',
+                          style: Theme.of(context).textTheme.caption!.copyWith(
+                                color: kSideInfoColor,
+
+                                // TODO set font family to SFProText
+                              ),
+                        ),
+                        const Spacer(),
+                        FavoriteIcon(id: expert.id)
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 7),
                   SizedBox(
@@ -77,6 +74,39 @@ class RecommendedExpertListItem extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class FavoriteIcon extends StatelessWidget {
+  const FavoriteIcon({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
+
+  final int id;
+  @override
+  Widget build(BuildContext context) {
+    final expert = BlocProvider.of<HomeCubit>(context).findExpertById(id);
+    return BlocBuilder<FavoritesCubit, FavoritesState>(
+      buildWhen: (_, nextState) =>
+          nextState is FavoritesStatusChangedState && nextState.itemId == id,
+      builder: (context, state) {
+        final favCubit = BlocProvider.of<FavoritesCubit>(context);
+        print('Building');
+        return InkWell(
+          onTap: () {
+            favCubit.toggleExpertFavoriteStatus(expert);
+          },
+          radius: 40,
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          child: Icon(
+            Icons.favorite,
+            color: favCubit.isInFavorites(id) ? Colors.green : kSideInfoColor,
+            size: 20,
+          ),
+        );
+      },
     );
   }
 }

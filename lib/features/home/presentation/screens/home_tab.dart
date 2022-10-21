@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oranos/core/components/widgets/on_error_refresh_button.dart';
-import 'package:oranos/features/home/logic/home_cubit.dart';
 
+import '/core/components/widgets/on_error_refresh_button.dart';
+import '/features/home/logic/home_cubit.dart';
 import '../widgets/draggable_bottom_sheet.dart';
 import '../widgets/home_list_title.dart';
 import '../widgets/online_experts_list.dart';

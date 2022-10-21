@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:oranos/core/errors/failures.dart';
-import 'package:oranos/features/home/data/models/category.dart';
-import 'package:oranos/features/home/data/models/home_data_model.dart';
-import 'package:oranos/features/home/data/models/online_expert.dart';
-import 'package:oranos/features/home/data/models/recommended_expert.dart';
-import 'package:oranos/features/home/data/provider/home_api.dart';
 
-import '../../../../core/network/network_info.dart';
+import '/core/errors/failures.dart';
+import '/core/network/network_info.dart';
+import '/features/home/data/models/category.dart';
+import '/features/home/data/models/home_data_model.dart';
+import '/features/home/data/models/online_expert.dart';
+import '/features/home/data/models/recommended_expert.dart';
+import '/features/home/data/provider/home_api.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, HomeDataModel>> getHomeData();
